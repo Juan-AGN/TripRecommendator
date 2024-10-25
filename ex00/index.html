@@ -3,9 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Generative Text App</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/generative-ai": "https://esm.run/@google/generative-ai"
+        }
+      }
+    </script>
 </head>
 <body>
-    placeholder
+    <div id="app">
+        <div class="bigdiv">
+            <div id="content">
+                <div class="basic_box">
+                    <div class="inside_box_two">
+                        <p>PROMPT 1: 
+                            <input type="text" id="promp1" class="input_on_div" placeholder="Enter first prompt">
+                        </p>
+                        <p>PROMPT 2: 
+                            <select id="promp2">
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                                <option value="option4">Option 4</option>
+                            </select>
+                        </p>
+                        <button id="generate-button" class="chat-form-button">Generate Text</button>
+                    </div>
+                </div>
+                <div id="response-container" class="inside_box" style="display: none;"></div>
+            </div>
+            <p class="credits">MADE BY: Juan Antonio García Narváez (juan-ant)</p>
+        </div>
+    </div>
+    <script type="module" src="javascript/script.js"></script>
 </body>
 </html>
