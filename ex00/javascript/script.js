@@ -1,7 +1,8 @@
+// Import the library and initialize API
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-// Fetch your API_KEY securely
-const API_KEY = "AIzaSyD84uSJR_acygc8KdqayD6Dg37QyUFiROk"; // replace with your actual API key
+// Securely fetch API Key
+const API_KEY = "AIzaSyD84uSJR_acygc8KdqayD6Dg37QyUFiROk"; // Replace with your actual API key
 
 const genAI = new GoogleGenerativeAI(API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
@@ -13,7 +14,9 @@ async function handleGenerateText() {
     const responseText = await generateText(prompt1);
     if (responseText) {
         document.getElementById('response-container').style.display = 'block';
-        document.getElementById('response-container').textContent = responseText;
+        // Replace line breaks with <br> tags for HTML
+        const formattedResponse = responseText.replace(/\n/g, "<br>");
+        document.getElementById('response-container').innerHTML = formattedResponse;
     }
 }
 
@@ -30,8 +33,8 @@ async function generateText(prompt1) {
     // Use the model's generateContent method
     const result = await model.generateContent(prompt, generationConfig);
     console.log("Prompt: " + prompt);
-    console.log(result.response.text());
-    return result.response.text() || "No response received";
+    console.log(await result.response.text());
+    return await result.response.text() || "No response received";
 }
 
 // Event listener for the generate button
